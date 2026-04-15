@@ -1,3 +1,4 @@
+[![Deploy Status](https://github.com/cloudijs/website/actions/workflows/deploy.yaml/badge.svg)](https://github.com/cloudijs/website/actions)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 # Cloudijs Website
