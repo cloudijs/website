@@ -17,6 +17,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Upload to Bunny storage
-        run: bunsy ./dist my-website-files
+        run: bunsy ./dist ./
         env:
           BUNNY_STORAGE_ZONE_PASSWORD: ${{ secrets.BUNNY_STORAGE_ZONE_PASSWORD }}
