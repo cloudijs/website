@@ -1,0 +1,39 @@
+name: Deploy website
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'source/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Upload website to Bunny
+    container:
+      image: sbstjn/bunsy:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload to Bunny storage
+        run: bunsy ./dist my-website-files
+        env:
+          BUNNY_STORAGE_ZONE_PASSWORD: ${{ secrets.BUNNY_STORAGE_ZONE_PASSWORD }}
+
+
+
+
+
+# Woodpecker configuration
+publish:
+    image: sbstjn/bunsy
+    commands:
+      - bunsy ./dist my-website-files
+    environment:
+      BUNNY_STORAGE_ZONE_PASSWORD:
+        from_secret: BUNNY_STORAGE_ZONE_PASSWORD
+    when:
+      event: [push]
+    depends_on:
+      - build
